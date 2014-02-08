@@ -18,6 +18,35 @@ How It Works
 There's a bunch of functions that start with $ and do stuff that's super
 useful and all start with $. This way they probably won't clash with anything that exists already (let me know if I made one that does, or just change it).
 
+Example
+=======
+
+Here's an example of getting some stuff when a page loads and allowing
+CORS credentials through:
+
+    function getstuff() {
+        var list = $id('mystuff');
+
+        $http({
+                'url': 'https://stuff.com/' + list.dataset.stuff_id + '/',
+                'method': "GET",
+                'good': function (req) {
+                    list.innerHTML = req.responseText;
+                },
+                'credentials': true,
+                'error': function (req) {
+                    list.innerHTML = "<h1>ERROR: </h1>" + req.responseText;
+                }
+        });
+    }
+
+    $boot(paydiv)
+
+Documentation
+=============
+
+The library is tiny. Seriously, just go read the code.  It's good education.  For the super lazy
+here's a short listing of what's in it.
 
 Getting
 -------
