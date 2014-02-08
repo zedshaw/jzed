@@ -71,7 +71,7 @@ function $previous(node) {
 }
 
 function $siblings(node) {
-    return $filter(node.parentNode.children, function (child) { return child !== el; });
+    return $filter(node.parentNode.children, function (child) { return child !== node; });
 }
 
 function $style() {
