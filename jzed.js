@@ -63,11 +63,11 @@ function $each(arr, cb) {
 }
 
 function $next(node) {
-    node.nextElementSibling;
+    return node.nextElementSibling;
 }
 
 function $previous(node) {
-    node.previousElementSibling;
+    return node.previousElementSibling;
 }
 
 function $siblings(node) {
