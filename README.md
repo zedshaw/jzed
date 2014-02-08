@@ -31,11 +31,11 @@ replacing it along with CORS credentials allowed:
                 'url': 'https://stuff.com/' + list.dataset.stuff_id + '/',
                 'method': "GET",
                 'good': function (req) {
-                    list.innerHTML = req.responseText;
+                    $html(list, req.responseText);
                 },
                 'credentials': true,
                 'error': function (req) {
-                    list.innerHTML = "<h1>ERROR: </h1>" + req.responseText;
+                    $html(list, "<h1>ERROR: </h1>" + req.responseText);
                 }
         });
     }
