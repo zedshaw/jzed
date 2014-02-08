@@ -2,7 +2,7 @@ JZed.js -- The functional JQuery Alternative
 ====
 
 JZed is my alternative to JQuery that's meant to be more functional and full of
-$.  It's legit purpose is to do the 80% of things that you sometimes need to do
+$.  Its legit purpose is to do the 80% of things that you sometimes need to do
 on a remote site that is punching through to yours and they might have a
 different or no JQuery installed.  This is a tiny amount of code that has
 enough of the functionality found in JQuery and packaged in a way that can't
