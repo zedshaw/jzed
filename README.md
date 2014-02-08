@@ -110,6 +110,7 @@ HTMLing
   * $outer\_html(node) -- Get the outer HTML of node.
   * $replace\_with(node, newhtml) -- Replace node with newhtml.
   * $text(node, newtext) -- Set the text of node to newtext.
+  * $text_of(node) -- Get the text of node.
   * $offset(node) -- Get node's offset.
   * $offset\_parent(node) -- Get the parent offset of node.
 

@@ -182,6 +182,10 @@ function $parent(node) {
     return node.parentNode;
 }
 
+function $text_of(node) {
+    return node.textContent;
+}
+
 function $text(node, newtext) {
     node.textContent = newtext;
 }
