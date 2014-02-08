@@ -91,7 +91,7 @@ function $toggle(node, className) {
 }
 
 function $new(tag, id, html) {
-    var new_tag = document.createElement("div");
+    var new_tag = document.createElement(tag);
     new_tag.id = id;
     new_tag.innerHTML = html;
     return new_tag;
