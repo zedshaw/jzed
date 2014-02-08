@@ -21,8 +21,8 @@ useful and all start with $. This way they probably won't clash with anything th
 Example
 =======
 
-Here's an example of getting some stuff when a page loads and allowing
-CORS credentials through:
+Here's an example of getting some stuff from a remote server based on the id of a div and
+replacing it along with CORS credentials allowed:
 
     function getstuff() {
         var list = $id('mystuff');
