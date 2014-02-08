@@ -91,16 +91,16 @@ DOMing
   * $remove(parent, child) -- Remove that child from this parent.
   * $clone(node) -- Clone that node.
   * $parent(node) -- Get the parent of this node.
+  * $attribute(node, name, value) -- Set the attribute name in node to value.
+  * $attribute\_of(node, name) -- Get the attribute named from the node?
 
 Testing
 -------
 
-  * $matches(node, selector) -- Does node match this selector.
-  * $contains(node, child) -- Does node contain that child.
+  * $matches(node, selector) -- Does node match this selector?
+  * $contains(node, child) -- Does node contain that child?
   * $has(node, selector) -- Does node have this selector?
-  * $empty(node) -- Is this node empty.
-  * $attribute\_of(node, name) -- Get the attribute named from the node.
-  * $attribute(node, name, value) -- Set the attribute name in node to value.
+  * $empty(node) -- Is this node empty?
 
 HTMLing
 -------
