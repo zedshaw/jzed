@@ -202,7 +202,9 @@ test( "$now tests", function() {
 });
 
 test( "$parse tests", function() {
-    ok( 1 == "1");
+    var htmlString = "<div><h1>FOO</h1></div>";
+    var $parsedHTML = $parse(htmlString);
+    ok( htmlString === $parsedHTML[0].outerHTML);
 });
 
 test( "$json tests", function() {
