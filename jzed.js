@@ -228,8 +228,8 @@ function $now() {
 }
 
 function $parse(htmlString) {
-    var tmp = document.implementation.createHTMLDocument()
-    tmp.body.innerHTML = str
+    var tmp = document.implementation.createHTMLDocument();
+    tmp.body.innerHTML = htmlString;
     return tmp.body.children;
 }
 
