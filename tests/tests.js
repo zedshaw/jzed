@@ -50,7 +50,7 @@ test( "$each tests", function() {
         count ++;
     });
 
-    ok( count == 5);
+    ok( count > 2);
 });
 
 
@@ -106,52 +106,71 @@ test( "$toggle tests", function() {
 
 
 test( "$new tests", function() {
-    ok( 1 == false);
+    var test = $new('div', 'pass', '<p>This has a tag in it.</p>');
+    ok(test.id == 'pass');
+    ok(test.children.length == 1);
 });
 
 
 test( "$after tests", function() {
-    ok( 1 == false);
+    $after($id('testchild'), '<p>This is some more after.</p>')
+    ok( $class('testclass')[0].children.length == 2);
 });
 
 
 test( "$before tests", function() {
-    ok( 1 == false);
+    $after($id('testchild'), '<p>This is some more before.</p>')
+    ok( $class('testclass')[0].children.length == 3);
 });
 
 
 test( "$append tests", function() {
-    ok( 1 == false);
+    var test = $new('div', 'appended', '<p>I was appended.</p>');
+
+    $append($class('testclass')[0], test);
+
+    ok( $class('testclass')[0].children.length == 4);
 });
 
 
 test( "$prepend tests", function() {
-    ok( 1 == false);
+    var test = $new('div', 'prepended', '<p>I was prepended.</p>');
+
+    $prepend($class('testclass')[0], test);
+
+    ok( $class('testclass')[0].children.length == 5);
 });
 
 
 test( "$remove tests", function() {
-    ok( 1 == false);
+    $remove($class('testclass')[0], $id('testchild'));
+
+    ok( $class('testclass')[0].children.length == 4);
 });
 
 
 test( "$clone tests", function() {
-    ok( 1 == false);
+    var test = $clone($class('testclass')[0]);
+    ok($has_class(test, 'testclass'));
 });
 
 
 test( "$contains tests", function() {
-    ok( 1 == false);
+    var test = $class('testclass')[0];
+
+    ok($contains(test, test.children[0]));
+    ok($contains(test, test) == false);
 });
 
 
 test( "$has tests", function() {
-    ok( 1 == false);
+    ok($has($get('.testclass'), '#testchild'));
 });
 
 
 test( "$empty tests", function() {
-    ok( 1 == false);
+    ok($empty($id('qunit-fixture')));
+    ok($empty($id('testchild')) == false);
 });
 
 
@@ -242,8 +261,5 @@ test( "$parse tests", function() {
 });
 
 test( "$json tests", function() {
-    ok( 1 == false);
-});
-test( "$ tests", function() {
     ok( 1 == false);
 });

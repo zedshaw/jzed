@@ -127,7 +127,7 @@ function $has(node, selector) {
 }
 
 function $empty(node) {
-    node.innerHTML = '';
+    return node.innerHTML == '';
 }
 
 function $style_of(node, ruleName) {
