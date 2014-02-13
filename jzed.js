@@ -160,7 +160,7 @@ function $outer_html(node) {
 }
 
 function $replace_with(node, newhtml) {
-    node.outerHTML = string;
+    node.outerHTML = newhtml;
 }
 
 function $matches(node, selector) {
