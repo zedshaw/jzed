@@ -35,12 +35,8 @@ function $class(name) {
     return document.getElementsByClassName(name);
 }
 
-function $name(name, inChildren) {
-    if(inChildren) {
-        return inChildren.children.namedItem(name);
-    } else {
-        return document.getElementsByTagName(name);
-    }
+function $name(name) {
+    return document.getElementsByTagName(name);
 }
 
 function $filter(nodes, fn) {
@@ -63,21 +59,22 @@ function $each(arr, cb) {
 }
 
 function $next(node) {
-    node.nextElementSibling;
+    return node.nextElementSibling;
 }
 
 function $previous(node) {
-    node.previousElementSibling;
+    return node.previousElementSibling;
 }
 
 function $siblings(node) {
-    return $filter(node.parentNode.children, function (child) { return child !== el; });
+    return $filter(node.parentNode.children, function (child) { return child !== node; });
 }
 
 function $style() {
     $each(arguments, function(val) {
         if(val[0].length != null) {
             $each(val[0], function(element) {
+                console.log('VAL', val, 'ELEMENT', element);
                 element.className = val[1];
             });
         } else {
