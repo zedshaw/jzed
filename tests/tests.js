@@ -182,60 +182,89 @@ test( "$style_of tests", function() {
 
 
 test( "$attribute_of tests", function() {
-    ok( 1 == false);
+    ok($attribute_of($id('testchild'), 'id') == 'testchild');
 });
 
 
 test( "$attribute tests", function() {
-    ok( 1 == false);
+    $attribute($id('testchild'), 'class', 'pass');
+    ok($attribute_of($id('testchild'), 'class') == 'pass');
+
 });
 
 test( "$html_of tests", function() {
-    ok( 1 == false);
-});
-
-test( "$ tests", function() {
-    ok( 1 == false);
+    var html = $html_of($id('testchild'));
+    ok(html == 'This is a child.');
 });
 
 test( "$html tests", function() {
-    ok( 1 == false);
+    $html($id('testchild'), 'This is another child.');
+    ok($html_of($id('testchild')) == 'This is another child.');
 });
 
 test( "$has_class tests", function() {
-    ok( 1 == false);
+    ok($has_class($class('testclass')[0], 'testclass'));
 });
 
 test( "$outer_html tests", function() {
-    ok( 1 == false);
+    var outer = $outer_html($id('testchild'));
+    ok(outer == '<p id="testchild">This is a child.</p>');
 });
 
 test( "$replace_with tests", function() {
-    ok( 1 == false);
+    var newhtml = '<p id="testchild">Testing again.</p>';
+    $replace_with($id('testchild'), newhtml);
+    var outer = $outer_html($id('testchild'));
+    ok($outer_html($id('testchild')) == newhtml);
 });
 
 test( "$matches tests", function() {
-    ok( 1 == false);
+    var node = $id('testchild');
+
+    ok($matches(node, 'p'));
 });
 
 test( "$offset tests", function() {
-    ok( 1 == false);
+    var offset = $offset($get('#qunit'));
+    ok(offset != null);
+    ok(offset.left > 0);
+    ok(offset.top > 0);
 });
 
 test( "$offset_parent tests", function() {
-    ok( 1 == false);
+    var offset = $offset_parent($get('#testchild'));
+    ok(offset != null);
 });
 
 test( "$parent tests", function() {
-    ok( 1 == false);
+    ok($matches($parent($id('testchild')), '.testclass'));
 });
 
-test( "$text tests", function() {
-    ok( 1 == false);
+test( "$text and $text_of tests", function() {
+    ok($text_of($id('testchild')) != null);
+
+    $text($id('testchild'), 'The new text.');
+    
+    ok($text_of($id('testchild')) == 'The new text.');
+});
+
+test( "$now tests", function() {
+    ok($now() != null);
+});
+
+test( "$parse tests", function() {
+    var node = $parse('<div class="pass"><p>Howdy pardner</p></div>');
+    ok($matches(node[0], '.pass'));
+});
+
+test( "$json tests", function() {
+    var data = $json('{"left": 10, "top": 20}');
+    ok(data.left == 10);
+    ok(data.top == 20);
 });
 
 test( "$boot tests", function() {
-    ok( 1 == false);
+    ok(document.bootRan == true);
 });
 
 test( "$off tests", function() {
@@ -247,21 +276,20 @@ test( "$on tests", function() {
 });
 
 test( "$http tests", function() {
-    ok( 1 == false);
+    ok( document.httpError == true);
 });
 
-test( "$map tests", function() {
-    ok( 1 == false);
+$boot(function () { document.bootRan = true; });
+
+$http({
+    credentials: true,
+    error: function () {
+        document.httpError = true;
+    },
+    good: function () {
+        document.httpError = false;
+    },
+    method: 'GET',
+    url: 'http://localhost/nowayinhellyouhavethisworking/'
 });
 
-test( "$now tests", function() {
-    ok( 1 == false);
-});
-
-test( "$parse tests", function() {
-    ok( 1 == false);
-});
-
-test( "$json tests", function() {
-    ok( 1 == false);
-});

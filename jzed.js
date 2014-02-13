@@ -160,11 +160,25 @@ function $outer_html(node) {
 }
 
 function $replace_with(node, newhtml) {
-    node.outerHTML = string;
+    node.outerHTML = newhtml;
 }
 
 function $matches(node, selector) {
-    return (node.matches || node.matchesSelector || node.msMatchesSelector || node.mozMatchesSelector || node.webkitMatchesSelector || node.oMatchesSelector)(selector);
+    if(node.matches) {
+        return node.matches(selector);
+    } else if(node.matchesSelector) {
+        return node.matchesSelector(selector);
+    } else if(node.mozMatchesSelector) {
+        return node.mozMatchesSelector(selector);
+    } else if(node.webkitMatchesSelector) {
+        return node.webkitMatchesSelector(selector);
+    } else if(node.oMatchesSelector) {
+        return node.oMatchesSelector(selector);
+    } else if(node.msMatchesSelector) {
+        return node.msMatchesSelector(selector);
+    } else {
+        return null;
+    }
 }
 
 function $offset(node) {
@@ -216,17 +230,13 @@ function $http(settings) {
     req.send(null);
 }
 
-function $map(arr, fn) {
-    return arr.map(fn);
-}
-
 function $now() {
     return Date.now();
 }
 
 function $parse(htmlString) {
     var tmp = document.implementation.createHTMLDocument()
-    tmp.body.innerHTML = str
+    tmp.body.innerHTML = htmlString
     return tmp.body.children;
 }
 
