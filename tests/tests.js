@@ -175,7 +175,9 @@ test( "$empty tests", function() {
 
 
 test( "$style_of tests", function() {
-    ok( 1 == false);
+    var test = $style_of($class('pass')[0], 'color');
+
+    ok(test == 'rgb(82, 140, 224)');
 });
 
 
