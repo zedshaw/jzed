@@ -267,6 +267,27 @@ test( "$boot tests", function() {
     ok(document.bootRan == true);
 });
 
+test( "$on and $off tests", function() {
+    var ev = Event('click')
+    var node = $id('testchild');
+    var handler = function () {
+        document.eventFired = true;
+    }
+
+    $on(node, 'click', handler);
+
+    node.dispatchEvent(ev);
+
+    ok(document.eventFired == true);
+
+    document.eventFired = false;
+
+    $off(node, 'click', handler);
+
+    node.dispatchEvent(ev);
+
+    ok(document.eventFired == false);
+});
 
 test( "$http tests", function() {
     ok( document.httpError == true);
@@ -274,18 +295,18 @@ test( "$http tests", function() {
 
 $boot(function () {
     document.bootRan = true; 
+});
 
-    $http({
-        credentials: true,
-        error: function () {
-            document.httpError = true;
-        },
-        good: function () {
-            document.httpError = false;
-        },
-        method: 'GET',
-        url: 'http://localhost/nowayinhellyouhavethisworking/'
-    });
 
+$http({
+    credentials: true,
+    error: function () {
+        document.httpError = true;
+    },
+    good: function () {
+        document.httpError = false;
+    },
+    method: 'GET',
+    url: 'http://localhost/nowayinhellyouhavethisworking/'
 });
 
