@@ -74,7 +74,6 @@ function $style() {
     $each(arguments, function(val) {
         if(val[0].length != null) {
             $each(val[0], function(element) {
-                console.log('VAL', val, 'ELEMENT', element);
                 element.className = val[1];
             });
         } else {
