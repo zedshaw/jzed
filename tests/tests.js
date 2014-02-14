@@ -267,29 +267,25 @@ test( "$boot tests", function() {
     ok(document.bootRan == true);
 });
 
-test( "$off tests", function() {
-    ok( 1 == false);
-}); 
-
-test( "$on tests", function() {
-    ok( 1 == false);
-});
 
 test( "$http tests", function() {
     ok( document.httpError == true);
 });
 
-$boot(function () { document.bootRan = true; });
+$boot(function () {
+    document.bootRan = true; 
 
-$http({
-    credentials: true,
-    error: function () {
-        document.httpError = true;
-    },
-    good: function () {
-        document.httpError = false;
-    },
-    method: 'GET',
-    url: 'http://localhost/nowayinhellyouhavethisworking/'
+    $http({
+        credentials: true,
+        error: function () {
+            document.httpError = true;
+        },
+        good: function () {
+            document.httpError = false;
+        },
+        method: 'GET',
+        url: 'http://localhost/nowayinhellyouhavethisworking/'
+    });
+
 });
 
